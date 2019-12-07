@@ -9,10 +9,8 @@ blink_badge = ->
 
 copy_card_link = ->
 	browser.tabs.query(
-		{
-			currentWindow: true,
-			active: true
-		},
+		currentWindow: true,
+		active: true,
 		([current_tab]) ->
 			try
 				{ board, card } =
