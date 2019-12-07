@@ -8,7 +8,9 @@ browser.runtime.onMessage.addListener (message) ->
 			card_id = path.match(/^\/c\/[^\/]+/)[0].replace(/^\/c\//, '')
 
 			card_resp =
-				await fetch "https://trello.com/1/cards/#{encodeURIComponent(card_id)}"
+				await fetch(
+					"https://trello.com/1/cards/#{encodeURIComponent(card_id)}"
+				)
 			card = await card_resp.json()
 
 			board_resp =
