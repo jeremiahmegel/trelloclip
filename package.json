@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "coffeescript": "^2.4.1",
+    "cson": "^6.7.0",
     "fs-extra": "^8.1.0"
   }
 }
