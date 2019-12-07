@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+case $1 in
+	clean)
+		rm -r dist/
+		;;
+	*)
+		mkdir -p dist/
+		cp -a src/. dist/
+		find dist/ -name '*.coffee' -exec npx coffee -c {} \; -exec rm {} \;
+		;;
+esac
