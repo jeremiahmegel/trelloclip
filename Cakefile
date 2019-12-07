@@ -4,12 +4,6 @@ coffeelint = require 'coffeelint'
 cson = require 'cson'
 fs = require 'fs-extra'
 
-find_files = (pattern) ->
-	spawnSync(
-		'find',
-		['build/', '-name', pattern]
-	).stdout.toString().split('\n').filter (file) -> /\S/.test(file)
-
 task 'lint', ->
 	fs.writeFileSync(
 		'coffeelint.json',
@@ -37,6 +31,12 @@ task 'lint', ->
 	)
 
 task 'build', ->
+	find_files = (pattern) ->
+		spawnSync(
+			'find',
+			['build/', '-name', pattern]
+		).stdout.toString().split('\n').filter (file) -> /\S/.test(file)
+
 	fs.removeSync('build')
 	fs.copySync('src', 'build')
 
