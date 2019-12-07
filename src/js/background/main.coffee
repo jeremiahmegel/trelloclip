@@ -2,9 +2,8 @@ blink_badge = ->
 	browser.browserAction.setBadgeText(text: ' ')
 
 	setTimeout(
-		->
-			browser.browserAction.setBadgeText(text: '')
-		, 250
+		-> browser.browserAction.setBadgeText(text: ''),
+		250
 	)
 
 copy_card_link = ->
