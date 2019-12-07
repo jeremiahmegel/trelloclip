@@ -1,13 +1,9 @@
 blink_badge = ->
-	browser.browserAction.setBadgeText({
-		text: ' '
-	})
+	browser.browserAction.setBadgeText(text: ' ')
 
 	setTimeout(
 		->
-			browser.browserAction.setBadgeText({
-				text: ''
-			})
+			browser.browserAction.setBadgeText(text: '')
 		, 250
 	)
 
@@ -30,13 +26,9 @@ copy_card_link = ->
 
 				navigator.clipboard.writeText(markdown_link)
 
-				browser.browserAction.setBadgeBackgroundColor({
-					color: '#00ff00' # green
-				})
+				browser.browserAction.setBadgeBackgroundColor(color: '#00ff00') # green
 			catch
-				browser.browserAction.setBadgeBackgroundColor({
-					color: '#ff0000' # red
-				})
+				browser.browserAction.setBadgeBackgroundColor(color: '#ff0000') # red
 
 			blink_badge()
 	)
