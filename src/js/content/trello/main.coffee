@@ -9,13 +9,13 @@ browser.runtime.onMessage.addListener (message) ->
 
 			card_resp =
 				await fetch(
-					"https://trello.com/1/cards/#{encodeURIComponent(card_id)}"
+					"#{window.location.origin}/1/cards/#{encodeURIComponent(card_id)}"
 				)
 			card = await card_resp.json()
 
 			board_resp =
 				await fetch(
-					"https://trello.com/1/boards/#{encodeURIComponent(card.idBoard)}"
+					"#{window.location.origin}/1/boards/#{encodeURIComponent(card.idBoard)}"
 				)
 			board = await board_resp.json()
 
