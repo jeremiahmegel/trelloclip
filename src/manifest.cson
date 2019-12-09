@@ -4,16 +4,17 @@ version: '1.0'
 description: 'Copy Markdown link to current Trello card'
 author: 'Jer Megel'
 icons:
-	48: 'images/trello.svg'
-	96: 'images/trello.svg'
+	96: 'images/trello/96.png'
 page_action:
-	default_icon: 'images/trello.svg'
+	default_icon:
+    96: 'images/trello/96.png'
 	default_title: 'Copy Markdown link to current Trello card'
 	show_matches: [
 		'*://*.trello.com/*'
 	]
 permissions: [
 	'clipboardWrite'
+	'declarativeContent'
 ]
 background:
 	scripts: [
@@ -26,6 +27,7 @@ content_scripts: [
 			'*://*.trello.com/*'
 		]
 		js: [
+      'js/lib/webextension-polyfill/browser-polyfill.js'
 			'js/content/trello/main.js'
 		]
 	}
@@ -33,4 +35,4 @@ content_scripts: [
 commands:
 	_execute_page_action:
 		suggested_key:
-			default: 'Ctrl+Alt+M'
+			default: 'Alt+Shift+M'
