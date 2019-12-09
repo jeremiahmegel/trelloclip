@@ -40,14 +40,14 @@ task 'build', ->
 	fs.removeSync('build')
 	fs.copySync('src', 'build')
 
-	find_files('*.coffee').forEach (file) ->
+	for file in find_files('*.coffee')
 		fs.writeFileSync(
 			file.replace(/\.coffee$/, '.js')
 			coffee._compileFile(file)
 		)
 		fs.removeSync(file)
 
-	find_files('*.cson').forEach (file) ->
+	for file in find_files('*.cson')
 		fs.writeFileSync(
 			file.replace(/\.cson$/, '.json')
 			cson.createJSONString(
