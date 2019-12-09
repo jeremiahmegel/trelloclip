@@ -17,6 +17,7 @@ permissions: [
 ]
 background:
 	scripts: [
+		'js/lib/webextension-polyfill/browser-polyfill.js'
 		'js/background/main.js'
 	]
 content_scripts: [

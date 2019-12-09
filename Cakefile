@@ -62,6 +62,11 @@ task 'build', ->
 		)
 		fs.removeSync(file)
 
+	fs.copySync(
+		'node_modules/webextension-polyfill/dist/browser-polyfill.js'
+		'build/js/lib/webextension-polyfill/browser-polyfill.js'
+	)
+
 task 'package', ->
 	invoke 'build'
 
