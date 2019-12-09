@@ -3,6 +3,7 @@ coffee = require 'coffeescript'
 coffeelint = require 'coffeelint'
 cson = require 'cson'
 fs = require 'fs-extra'
+web_ext = require 'web-ext'
 
 task 'lint', ->
 	fs.writeFileSync(
@@ -32,6 +33,7 @@ task 'lint', ->
 
 task 'clean', ->
 	fs.removeSync('build')
+	fs.removeSync('dist')
 
 task 'build', ->
 	find_files = (pattern) ->
@@ -40,7 +42,7 @@ task 'build', ->
 			['build/', '-name', pattern]
 		).stdout.toString().split('\n').filter (file) -> /\S/.test(file)
 
-	invoke 'clean'
+	fs.removeSync('build')
 
 	fs.copySync('src', 'build')
 
@@ -59,3 +61,12 @@ task 'build', ->
 			)
 		)
 		fs.removeSync(file)
+
+task 'package', ->
+	invoke 'build'
+
+	await web_ext.default.cmd.build(
+		sourceDir: 'build'
+		artifactsDir: 'dist'
+		overwriteDest: true
+	)
