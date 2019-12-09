@@ -7,7 +7,7 @@ icons:
 	96: 'images/trello/96.png'
 page_action:
 	default_icon:
-    96: 'images/trello/96.png'
+		96: 'images/trello/96.png'
 	default_title: 'Copy Markdown link to current Trello card'
 	show_matches: [
 		'*://*.trello.com/*'
@@ -27,7 +27,7 @@ content_scripts: [
 			'*://*.trello.com/*'
 		]
 		js: [
-      'js/lib/webextension-polyfill/browser-polyfill.js'
+			'js/lib/webextension-polyfill/browser-polyfill.js'
 			'js/content/trello/main.js'
 		]
 	}
