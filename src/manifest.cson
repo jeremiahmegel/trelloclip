@@ -6,8 +6,12 @@ author: 'Jer Megel'
 icons:
 	48: 'images/trello.svg'
 	96: 'images/trello.svg'
-browser_action:
+page_action:
 	default_icon: 'images/trello.svg'
+	default_title: 'Copy Markdown link to current Trello card'
+	show_matches: [
+		'*://*.trello.com/*'
+	]
 permissions: [
 	'clipboardWrite'
 ]
@@ -26,6 +30,6 @@ content_scripts: [
 	}
 ]
 commands:
-	_execute_browser_action:
+	_execute_page_action:
 		suggested_key:
 			default: 'Ctrl+Alt+M'
