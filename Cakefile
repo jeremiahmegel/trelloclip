@@ -6,7 +6,7 @@ fs = require 'fs-extra'
 
 task 'lint', ->
 	fs.writeFileSync(
-		'coffeelint.json',
+		'coffeelint.json'
 		cson.createJSONString(
 			cson.parseCSONFile('coffeelint.cson')
 		)
@@ -15,12 +15,12 @@ task 'lint', ->
 	linters =
 		coffeelint:
 			spawnSync(
-				'coffeelint',
+				'coffeelint'
 				[
-					'-f', 'coffeelint.json',
-					'Cakefile',
+					'-f', 'coffeelint.json'
+					'Cakefile'
 					'src/'
-				],
+				]
 				stdio: 'inherit'
 			).status == 0
 
@@ -33,7 +33,7 @@ task 'lint', ->
 task 'build', ->
 	find_files = (pattern) ->
 		spawnSync(
-			'find',
+			'find'
 			['build/', '-name', pattern]
 		).stdout.toString().split('\n').filter (file) -> /\S/.test(file)
 
@@ -42,14 +42,14 @@ task 'build', ->
 
 	find_files('*.coffee').forEach (file) ->
 		fs.writeFileSync(
-			file.replace(/\.coffee$/, '.js'),
+			file.replace(/\.coffee$/, '.js')
 			coffee._compileFile(file)
 		)
 		fs.removeSync(file)
 
 	find_files('*.cson').forEach (file) ->
 		fs.writeFileSync(
-			file.replace(/\.cson$/, '.json'),
+			file.replace(/\.cson$/, '.json')
 			cson.createJSONString(
 				cson.parseCSONFile(file)
 			)
