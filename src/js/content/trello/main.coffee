@@ -19,5 +19,7 @@ browser.runtime.onMessage.addListener (message) ->
 				)
 			board = await board_resp.json()
 
-			card: card
-			board: board
+			{
+				card
+				board
+			}
