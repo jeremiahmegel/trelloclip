@@ -30,6 +30,9 @@ task 'lint', ->
 		if (success for _key, success of linters).every((x) -> x) then 0 else 1
 	)
 
+task 'clean', ->
+	fs.removeSync('build')
+
 task 'build', ->
 	find_files = (pattern) ->
 		spawnSync(
@@ -37,7 +40,8 @@ task 'build', ->
 			['build/', '-name', pattern]
 		).stdout.toString().split('\n').filter (file) -> /\S/.test(file)
 
-	fs.removeSync('build')
+	invoke 'clean'
+
 	fs.copySync('src', 'build')
 
 	for file in find_files('*.coffee')
@@ -55,6 +59,3 @@ task 'build', ->
 			)
 		)
 		fs.removeSync(file)
-
-task 'clean', ->
-	fs.removeSync('build')
