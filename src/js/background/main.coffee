@@ -2,19 +2,19 @@ blink_badge = ->
 	browser.browserAction.setBadgeText(text: ' ')
 
 	setTimeout(
-		-> browser.browserAction.setBadgeText(text: ''),
+		-> browser.browserAction.setBadgeText(text: '')
 		250
 	)
 
 copy_card_link = ->
 	browser.tabs.query(
-		currentWindow: true,
-		active: true,
+		currentWindow: true
+		active: true
 		([current_tab]) ->
 			try
 				{ board, card } =
 					await browser.tabs.sendMessage(
-						current_tab.id,
+						current_tab.id
 						'get_card'
 					)
 
