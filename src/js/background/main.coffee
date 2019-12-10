@@ -11,15 +11,10 @@ copy_to_clipboard = (str) ->
 		copy_from.blur()
 		document.body.removeChild(copy_from)
 
-browser.pageAction.onClicked.addListener ->
-	current_tabs = await browser.tabs.query(
-		currentWindow: true
-		active: true
-	)
-
+browser.pageAction.onClicked.addListener (tab) ->
 	{ board, card } =
 		await browser.tabs.sendMessage(
-			current_tabs[0].id
+			tab.id
 			'get_card'
 		)
 	markdown_link = "[Trello: _#{board.name}_ - _#{card.name}_](#{card.url})"
