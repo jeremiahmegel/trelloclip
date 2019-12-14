@@ -36,3 +36,6 @@ commands:
 	_execute_page_action:
 		suggested_key:
 			default: 'Alt+Shift+M'
+browser_specific_settings:
+	gecko:
+		id: 'trelloclip@jeremiahm.com'
