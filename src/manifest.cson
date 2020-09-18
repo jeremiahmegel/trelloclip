@@ -1,6 +1,6 @@
 manifest_version: 2
 name: 'TrelloClip'
-version: '1.0'
+version: '1.0.1'
 description: 'Copy Markdown link to current Trello card'
 author: 'Jer Megel'
 icons:
