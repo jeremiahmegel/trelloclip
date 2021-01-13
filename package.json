@@ -12,8 +12,8 @@
 		"webextension-polyfill": ">=0.6.0"
 	},
 	"scripts": {
-	"lint": "cake lint",
-	"build": "cake build",
-	"package": "cake package"
+		"lint": "cake lint",
+		"build": "cake build",
+		"package": "cake package"
 	}
 }
